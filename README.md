@@ -1,41 +1,49 @@
-# VeriLuxe 🌟
+# dApp-VeriLuxe 🌟
 
-**VeriLuxe** is a luxury product authentication platform that uses blockchain technology to guarantee the authenticity of high-end fashion items. Built on Stellar Soroban smart contracts.
+**dApp-VeriLuxe** is a decentralized application (dApp) for luxury fashion authentication built on the Stellar blockchain. This frontend-only dApp provides a modern interface for interacting with Stellar Soroban smart contracts to verify, issue, and manage authenticity certificates for luxury fashion items.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Stellar](https://img.shields.io/badge/Stellar-Soroban-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-15.4.2-black.svg)
-![Rust](https://img.shields.io/badge/Rust-1.70+-orange.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue.svg)
 
 ## 🎯 Key Features
 
-- **🔐 Blockchain Authentication**: Immutable authenticity certificates on Stellar Soroban
-- **👛 Wallet Integration**: Complete support for Freighter and Stellar-compatible wallets
-- **🎨 Modern Interface**: Frontend built with Next.js 15 and Tailwind CSS
-- **⚡ REST API**: Rust middleware for efficient smart contract interaction
-- **🔄 Ownership Transfer**: Complete certificate management system
-- **👨‍💼 Admin Panel**: Comprehensive tools for certificate issuance and revocation
+- **🔐 Certificate Verification**: Verify authenticity of luxury fashion items using blockchain certificates
+- **👛 Stellar Wallet Integration**: Seamless connection with Freighter and other Stellar wallets
+- **🎨 Modern UI/UX**: Clean, responsive interface built with Next.js 15 and Tailwind CSS 4
+- **📱 Mobile-First Design**: Optimized for all device sizes
+- **🔄 Certificate Management**: Issue, transfer, and revoke authenticity certificates
+- **👨‍💼 Admin Dashboard**: Administrative tools for contract management
+- **⚡ Real-time Updates**: Live transaction status and error handling
 
-## 🏗️ System Architecture
+## 🏗️ Project Structure
 
 ```
-VeriLuxe/
-├── 🎨 frontend/           # Next.js 15 + TypeScript + Tailwind
+dApp-VeriLuxe/
+├── frontend/                    # Next.js 15 Frontend Application
 │   ├── src/
-│   │   ├── app/           # Next.js App Router
-│   │   ├── components/    # Modular React components
-│   │   ├── contexts/      # Wallet management context
-│   │   └── lib/           # Contract utilities and configuration
-│   └── package.json       # Frontend dependencies
-├── 🔧 contracts/          # Smart Contracts and API Backend
-│   ├── contracts/         # Soroban Smart Contract (Rust)
-│   │   ├── src/lib.rs     # Main FashionAuthContract
-│   │   └── deploy-js/     # Deployment scripts
-│   ├── api/               # REST API Middleware (Rust + Axum)
-│   │   ├── src/           # API source code
-│   │   └── tests/         # Integration tests
-│   └── scripts/           # Keypair generation utilities
-└── 📚 docs/               # GitBook Documentation
+│   │   ├── app/                # Next.js App Router pages
+│   │   │   ├── page.tsx        # Main application entry
+│   │   │   ├── layout.tsx      # Root layout
+│   │   │   └── globals.css     # Global styles
+│   │   ├── components/         # React Components
+│   │   │   ├── modules/        # Feature modules
+│   │   │   │   ├── dapp/       # dApp interface components
+│   │   │   │   └── landing/    # Landing page components
+│   │   │   └── ui/             # Reusable UI components
+│   │   ├── contexts/           # React Context providers
+│   │   │   └── WalletContext.tsx # Stellar wallet management
+│   │   └── lib/                # Utilities and configurations
+│   │       ├── contract-config.ts
+│   │       ├── fashion-auth-contract.ts
+│   │       └── utils.ts
+│   ├── public/                 # Static assets
+│   ├── package.json           # Dependencies and scripts
+│   └── next.config.ts         # Next.js configuration
+├── .github/                   # GitHub workflows and templates
+├── LICENSE                    # MIT License
+└── README.md                  # This file
 ```
 
 ## 🚀 Quick Start
@@ -43,196 +51,222 @@ VeriLuxe/
 ### Prerequisites
 
 - **Node.js** 18+ and npm/yarn
-- **Rust** 1.70+ with wasm32-unknown-unknown target
-- **Soroban CLI** for contract deployment
 - **Stellar Wallet** (Freighter recommended)
+- **Git** for cloning the repository
 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/JosueBrenes/VeriLuxe.git
-cd VeriLuxe
+git clone https://github.com/your-username/dApp-VeriLuxe.git
+cd dApp-VeriLuxe
 ```
 
-### 2. Setup Smart Contract
-
-```bash
-# Generate admin keypair
-cd contracts/scripts
-node generate_keypair.js
-
-# Compile contract
-cd ../contracts
-cargo build --target wasm32-unknown-unknown --release
-
-# Deploy contract
-cd deploy-js
-npm install
-npm run deploy
-```
-
-### 3. Configure API Backend
-
-```bash
-cd contracts/api
-cp .env.example .env
-# Edit .env with your secret key and contract ID
-cargo run
-```
-
-### 4. Setup Frontend
+### 2. Install Dependencies
 
 ```bash
 cd frontend
 npm install
+```
+
+### 3. Configure Environment
+
+```bash
+# Copy environment template (if available)
 cp .env.example .env.local
-# Configure environment variables
+# Configure your Stellar network settings
+```
+
+### 4. Run Development Server
+
+```bash
 npm run dev
 ```
 
-Application will be available at `http://localhost:3000`
+The application will be available at `http://localhost:3000`
+
+### 5. Connect Your Wallet
+
+1. Install [Freighter Wallet](https://freighter.app/) browser extension
+2. Create or import your Stellar account
+3. Switch to Testnet for development
+4. Connect your wallet through the dApp interface
 
 ## 🛠️ Technology Stack
 
-### Frontend
-- **Next.js 15.4.2** - React framework with App Router
-- **TypeScript** - Static typing
-- **Tailwind CSS 4** - Utility-first styling framework
-- **Stellar SDK** - Stellar blockchain integration
-- **Radix UI** - Accessible UI components
-- **Lucide React** - Modern iconography
+### Core Technologies
+- **Next.js 15.4.2** - React framework with App Router and Turbopack
+- **React 19.1.0** - Latest React with concurrent features
+- **TypeScript 5** - Static type checking
+- **Tailwind CSS 4** - Utility-first CSS framework
 
-### Backend & Smart Contracts
-- **Rust** - Primary language for contracts and API
-- **Soroban SDK** - Stellar smart contracts
-- **Axum** - Async web framework for REST API
-- **Stellar SDK** - Stellar network interaction
-
-### Blockchain
+### Stellar Integration
+- **@stellar/stellar-sdk 13.3.0** - Stellar blockchain interaction
 - **Stellar Soroban** - Smart contract platform
-- **Testnet/Mainnet** - Supported networks
-- **Freighter** - Primary supported wallet
+- **Freighter Wallet** - Primary wallet integration
 
-## 📋 System Features
+### UI Components & Icons
+- **Radix UI** - Accessible component primitives
+- **Class Variance Authority** - Component variant management
+- **Lucide React** - Modern icon library
+- **Tailwind Merge** - Utility class merging
 
-### For General Users
-- ✅ **Certificate Verification**: Verify authenticity using certificate ID and metadata hash
-- ✅ **Wallet Connection**: Secure integration with Stellar wallets
-- ✅ **Ownership Transfer**: Transfer certificates between addresses
-- ✅ **Transaction History**: View certificate movement history
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **tw-animate-css** - Extended Tailwind animations
 
-### For Administrators
-- ✅ **Certificate Issuance**: Create new authenticity certificates
-- ✅ **Certificate Revocation**: Invalidate certificates when needed
-- ✅ **Admin Panel**: Statistics and certificate management
-- ✅ **Contract Initialization**: Initial system setup
+## 📋 dApp Features
 
-## 🔧 REST API Endpoints
+### 🔍 Certificate Verification
+- **Verify Authenticity**: Check luxury item certificates using certificate ID and metadata hash
+- **Real-time Validation**: Instant blockchain verification with visual feedback
+- **Certificate Details**: View complete certificate information and ownership history
 
-The REST API provides middleware between frontend and smart contracts:
+### 🎫 Certificate Management  
+- **Issue Certificates**: Create new authenticity certificates (Admin only)
+- **Transfer Ownership**: Securely transfer certificates between Stellar addresses
+- **Revoke Certificates**: Invalidate certificates when necessary (Admin only)
+- **Certificate Listing**: View all issued certificates with current status
 
-```bash
-# Health Check
-GET /health
+### 👛 Wallet Integration
+- **Multi-wallet Support**: Compatible with Freighter and other Stellar wallets
+- **Secure Connections**: Cryptographic signature-based authentication
+- **Network Selection**: Support for Testnet and Mainnet environments
+- **Transaction Management**: Real-time transaction status and error handling
 
-# Contract initialization
-POST /init
-{"admin_address": "GXXXXXXX..."}
+### 🛡️ Admin Features
+- **Contract Initialization**: Set up and configure smart contract admin
+- **Admin Dashboard**: Overview of system statistics and certificate metrics
+- **Privilege Management**: Secure admin-only operations with proper authorization
+- **Contract Administration**: Complete smart contract management interface
 
-# Certificate management
-POST /certificates                    # Issue certificate
-GET /certificates/:id                 # Get details
-POST /certificates/:id/verify         # Verify authenticity
-POST /certificates/:id/transfer       # Transfer ownership
-POST /certificates/:id/revoke         # Revoke certificate
-GET /certificates/:id/exists          # Check existence
-```
+## 🧪 Development & Testing
 
-## 🧪 Testing
-
-### Smart Contract
-```bash
-cd contracts/contracts
-cargo test
-```
-
-### API Backend
-```bash
-cd contracts/api
-cargo test
-cargo test --test integration_tests
-```
-
-### Frontend
+### Frontend Development
 ```bash
 cd frontend
-npm run lint
+
+# Start development server with Turbopack
+npm run dev
+
+# Build for production
 npm run build
+
+# Start production server
+npm run start
+
+# Run linting
+npm run lint
 ```
+
+### Code Quality
+- **ESLint Configuration**: Comprehensive linting rules for React and TypeScript
+- **TypeScript Strict Mode**: Full type safety with strict configuration
+- **Component Architecture**: Modular component structure with clear separation
 
 ## 🌐 Network Configuration
 
-### Testnet (Default)
+The dApp supports both Stellar Testnet and Mainnet. Configure through environment variables:
+
+### Testnet (Recommended for Development)
 ```env
 NEXT_PUBLIC_NETWORK=testnet
 NEXT_PUBLIC_NETWORK_PASSPHRASE=Test SDF Network ; September 2015
 NEXT_PUBLIC_RPC_URL=https://soroban-testnet.stellar.org
 ```
 
-### Mainnet
+### Mainnet (Production)
 ```env
 NEXT_PUBLIC_NETWORK=mainnet
 NEXT_PUBLIC_NETWORK_PASSPHRASE=Public Global Stellar Network ; September 2015
 NEXT_PUBLIC_RPC_URL=https://mainnet.sorobanrpc.com
 ```
 
-## 📚 Documentation
+> **Note**: You'll need to deploy or connect to existing Soroban smart contracts for full functionality.
 
-- **[Smart Contracts](./contracts/README.md)** - Complete contract documentation
-- **[REST API](./contracts/api/README.md)** - Complete API guide
-- **[Frontend](./frontend/README.md)** - Frontend configuration and development
-- **[Scripts](./contracts/scripts/README.md)** - Utilities and tools
-- **[Deployment](./contracts/contracts/deploy-js/README.md)** - Deployment guide
-- **[Complete Documentation](./docs/README.md)** - GitBook documentation
+## 📚 Component Architecture
 
-## 🔒 Security
+### Main Components
+- **`FashionAuthDApp`** - Main dApp interface with tabbed navigation
+- **`LandingPage`** - Welcome screen and dApp entry point
+- **`WalletConnect`** - Stellar wallet connection component
+- **`AdminPanel`** - Administrative dashboard and controls
 
-- 🔐 **Private Keys**: Never stored on server
-- 🛡️ **Authentication**: Based on Stellar cryptographic signatures
-- 🔄 **Immutability**: Certificates stored on immutable blockchain
-- ✅ **Validation**: Comprehensive input and transaction validation
+### Feature Modules
+- **`VerifyForm`** - Certificate verification interface
+- **`IssueForm`** - Certificate issuance (admin only)
+- **`TransferForm`** - Ownership transfer functionality
+- **`RevokeForm`** - Certificate revocation (admin only)
+- **`CertificatesList`** - Display all certificates
+
+### Context & Hooks
+- **`WalletContext`** - Global wallet state management
+- **`useFashionAuth`** - Custom hook for contract interactions
+
+## 🔒 Security Features
+
+- 🔐 **Client-Side Only**: No server-side private key storage
+- 🛡️ **Wallet Integration**: Secure authentication through Stellar wallets
+- 🔄 **Blockchain Immutability**: All certificates stored on immutable Stellar ledger
+- ✅ **Input Validation**: Comprehensive form and data validation
+- 🚫 **Admin Controls**: Restricted operations with proper authorization checks
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Make your changes in the `frontend/` directory
+4. Test your changes thoroughly
+5. Commit your changes (`git commit -m 'Add new feature'`)
+6. Push to the branch (`git push origin feature/new-feature`)
+7. Open a Pull Request
+
+### Development Guidelines
+- Follow existing code patterns and component structure
+- Use TypeScript for all new components
+- Maintain responsive design principles
+- Test wallet integration thoroughly
+- Update documentation for significant changes
 
 ## 📄 Project Status
 
-- ✅ **Smart Contract**: Fully implemented and tested
-- ✅ **REST API**: Complete structure with functional endpoints
-- ✅ **Frontend**: Complete interface with wallet integration
-- ✅ **Deployment**: Automated deployment scripts
-- ⚠️ **Full Integration**: In optimization process
-- 📚 **Documentation**: GitBook in development
+- ✅ **Frontend dApp**: Complete Next.js 15 application
+- ✅ **Wallet Integration**: Freighter and Stellar wallet support
+- ✅ **UI Components**: Modern, accessible component library
+- ✅ **TypeScript**: Full type safety implementation
+- ⚠️ **Smart Contract Integration**: Requires contract deployment
+- 📱 **Mobile Optimization**: Responsive design completed
 
-## 🔗 Useful Links
+## 🔗 Useful Resources
 
-- **[Stellar Laboratory](https://laboratory.stellar.org/)** - Stellar development tool
-- **[Soroban Documentation](https://soroban.stellar.org/)** - Official Soroban docs
-- **[Freighter Wallet](https://freighter.app/)** - Recommended wallet
-- **[Stellar SDK Docs](https://stellar.github.io/js-stellar-sdk/)** - JavaScript SDK
+### Stellar Development
+- **[Stellar Laboratory](https://laboratory.stellar.org/)** - Stellar network testing and development tool
+- **[Soroban Documentation](https://soroban.stellar.org/)** - Official Soroban smart contract documentation
+- **[Stellar SDK Documentation](https://stellar.github.io/js-stellar-sdk/)** - JavaScript SDK for Stellar integration
 
-## 📧 Support
+### Wallet & Tools
+- **[Freighter Wallet](https://freighter.app/)** - Recommended Stellar wallet browser extension
+- **[Stellar Expert](https://stellar.expert/)** - Stellar network explorer and analytics
+- **[StellarTerm](https://stellarterm.com/)** - Stellar DEX and wallet interface
 
-For issues or questions:
-1. Check browser console for error messages
-2. Verify environment variable configuration
-3. Ensure smart contract is properly deployed
-4. Check network connectivity
+### Frontend Development
+- **[Next.js Documentation](https://nextjs.org/docs)** - Next.js framework documentation
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
+
+## 🐛 Troubleshooting
+
+### Common Issues
+1. **Wallet Connection Issues**: Ensure Freighter wallet is installed and unlocked
+2. **Network Errors**: Verify you're connected to the correct Stellar network (Testnet/Mainnet)
+3. **Contract Errors**: Ensure smart contracts are deployed and contract addresses are configured
+4. **Build Issues**: Clear `node_modules` and reinstall dependencies
+
+### Development Tips
+- Use browser developer tools to debug wallet connections
+- Check network requests for Stellar RPC errors
+- Verify wallet permissions and account funding
+- Monitor Stellar transaction status through explorers
 
 ## 📜 License
 
@@ -240,6 +274,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ for the luxury fashion community**
+**Built with ❤️ for luxury fashion authentication on Stellar**
 
-![VeriLuxe](https://img.shields.io/badge/VeriLuxe-Fashion%20Authentication-gold.svg)
+![dApp-VeriLuxe](https://img.shields.io/badge/dApp--VeriLuxe-Stellar%20Fashion%20dApp-gold.svg)
