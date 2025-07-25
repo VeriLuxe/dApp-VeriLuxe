@@ -1,0 +1,50 @@
+version: 2
+updates:
+  # Frontend npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "veriluxe-team"
+    assignees:
+      - "veriluxe-team"
+    commit-message:
+      prefix: "deps(frontend)"
+      include: "scope"
+    open-pull-requests-limit: 10
+    target-branch: "develop"
+    groups:
+      react:
+        patterns:
+          - "react*"
+          - "@types/react*"
+      nextjs:
+        patterns:
+          - "next*"
+          - "@next/*"
+      testing:
+        patterns:
+          - "@testing-library/*"
+          - "jest*"
+          - "playwright*"
+      linting:
+        patterns:
+          - "eslint*"
+          - "@typescript-eslint/*"
+          - "prettier*"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "veriluxe-team"
+    assignees:
+      - "veriluxe-team"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    open-pull-requests-limit: 3
+    target-branch: "develop"
