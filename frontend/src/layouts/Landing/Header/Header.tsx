@@ -15,19 +15,19 @@ export function LandingHeader({
   handleDisconnect,
 }: LandingHeaderProps) {
   return (
-    <header className="bg-white/80 backdrop-blur-sm border-b border-rose-100 shadow-sm">
+    <header className="bg-white/80 backdrop-blur-sm border-b border-yellow-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
-            <Shield className="h-8 w-8 text-rose-400" />
+            <Shield className="h-8 w-8 text-yellow-400" />
             <div>
               <h1 className="text-xl font-bold text-gray-900">VeriLuxe</h1>
-              <p className="text-xs text-rose-400">Powered by Stellar</p>
+              <p className="text-xs text-yellow-400">Powered by Stellar</p>
             </div>
           </div>
           <Button
             onClick={address ? handleDisconnect : handleConnect}
-            className="bg-rose-300 hover:bg-rose-400 text-gray-800 font-semibold border-0"
+            className="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-semibold border-0"
           >
             {address ? (
               <>

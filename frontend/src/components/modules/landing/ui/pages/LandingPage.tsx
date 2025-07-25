@@ -24,7 +24,7 @@ const LandingPage = () => {
   }, [address, router]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-amber-50">
       <LandingHeader
         address={address}
         handleConnect={handleConnect}

@@ -20,7 +20,7 @@ export function LandingHero({ address, handleConnect }: LandingHeroProps) {
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
               Authenticity Certification in{" "}
-              <span className="bg-gradient-to-r from-rose-400 to-pink-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-400 to-amber-300 bg-clip-text text-transparent">
                 Luxury Fashion
               </span>
             </h1>
@@ -36,7 +36,7 @@ export function LandingHero({ address, handleConnect }: LandingHeroProps) {
               onClick={handleConnect}
               size="lg"
               disabled={!!address}
-              className="bg-rose-300 hover:bg-rose-400 text-gray-800 font-semibold text-lg px-8 py-3 border-0"
+              className="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-semibold text-lg px-8 py-3 border-0"
             >
               {address ? "Entering DApp..." : "Get Started"}
               <ArrowRight className="h-5 w-5 ml-2" />
@@ -44,7 +44,7 @@ export function LandingHero({ address, handleConnect }: LandingHeroProps) {
             <Button
               variant="outline"
               size="lg"
-              className="border-rose-200 text-gray-700 hover:bg-rose-50 text-lg px-8 py-3 bg-transparent"
+              className="border-yellow-200 text-gray-700 hover:bg-yellow-50 text-lg px-8 py-3 bg-transparent"
             >
               Learn More
             </Button>
@@ -53,8 +53,8 @@ export function LandingHero({ address, handleConnect }: LandingHeroProps) {
       </div>
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-rose-100/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-100/50 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-yellow-100/50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-100/50 rounded-full blur-3xl"></div>
       </div>
     </section>
   );
