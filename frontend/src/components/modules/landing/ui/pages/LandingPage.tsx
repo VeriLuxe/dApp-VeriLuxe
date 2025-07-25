@@ -1,23 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, CheckCircle, Wallet, ArrowRight } from "lucide-react";
+import { Shield, ArrowRight } from "lucide-react";
+import { WalletButton } from "@/components/ui/WalletButton";
 
-interface LandingPageProps {
-  onEnterDApp: () => void;
-}
+export function LandingPage() {
+  const router = useRouter();
 
-export function LandingPage({ onEnterDApp }: LandingPageProps) {
-  const [walletConnected, setWalletConnected] = useState(false);
-
-  const handleConnectWallet = () => {
-    // Mock wallet connection - no real functionality
-    setWalletConnected(true);
-    setTimeout(() => {
-      onEnterDApp();
-    }, 1000);
+  const handleEnter = () => {
+    router.push("/dashboard");
   };
 
   return (
@@ -33,23 +26,7 @@ export function LandingPage({ onEnterDApp }: LandingPageProps) {
                 <p className="text-xs text-rose-400">Powered by Stellar</p>
               </div>
             </div>
-            <Button
-              onClick={handleConnectWallet}
-              disabled={walletConnected}
-              className="bg-rose-300 hover:bg-rose-400 text-gray-800 font-semibold border-0"
-            >
-              {walletConnected ? (
-                <>
-                  <CheckCircle className="h-4 w-4 mr-2" />
-                  Connected
-                </>
-              ) : (
-                <>
-                  <Wallet className="h-4 w-4 mr-2" />
-                  Connect Wallet
-                </>
-              )}
-            </Button>
+            <WalletButton />
           </div>
         </div>
       </header>
@@ -76,11 +53,11 @@ export function LandingPage({ onEnterDApp }: LandingPageProps) {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={handleConnectWallet}
+                onClick={handleEnter}
                 size="lg"
                 className="bg-rose-300 hover:bg-rose-400 text-gray-800 font-semibold text-lg px-8 py-3 border-0"
               >
-                {walletConnected ? "Entering DApp..." : "Get Started"}
+                Get Started
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
               <Button

@@ -26,7 +26,7 @@ import { RevokeForm } from "./RevokeForm";
 import { CertificatesList } from "./CertificatesList";
 import { AdminPanel } from "./AdminPanel";
 import { useFashionAuth } from "../landing/hooks/useFashionAuth";
-import { WalletConnect } from "@/components/ui/WalletConnect";
+import { WalletButton } from "@/components/ui/WalletButton";
 
 export function FashionAuthDApp() {
   const [activeTab, setActiveTab] = useState("verify");
@@ -84,7 +84,7 @@ export function FashionAuthDApp() {
                   </button>
                 </div>
               )}
-              <WalletConnect />
+              <WalletButton />
               {contractAddress && (
                 <Badge variant="outline" className="border-green-200 text-green-600">
                   Contract Connected
@@ -115,7 +115,7 @@ export function FashionAuthDApp() {
               <p className="text-gray-600 mb-6">
                 Please connect your Stellar wallet to interact with the VeriLuxe Fashion Authenticity platform.
               </p>
-              <WalletConnect />
+              <WalletButton />
             </div>
           </div>
         ) : (

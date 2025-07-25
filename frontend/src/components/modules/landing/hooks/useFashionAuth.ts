@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Keypair } from '@stellar/stellar-sdk';
 import { FashionAuthContract } from '@/lib/fashion-auth-contract';
 import { defaultConfig } from '@/lib/contract-config';
-import { useWallet } from '@/contexts/WalletContext';
+import { useWalletStore } from '@/stores/walletStore';
 
 interface Certificate {
   id: string;
@@ -23,8 +23,8 @@ export function useFashionAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Get wallet info from context
-  const { publicKey, isConnected, signTransaction } = useWallet();
+  // Get wallet info from zustand store
+  const { address: publicKey, loggedIn: isConnected } = useWalletStore();
 
   // Initialize contract on mount
   useEffect(() => {
