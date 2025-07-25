@@ -23,7 +23,11 @@ export const useWalletStore = create<WalletState>((set, get) => ({
     try {
       let kit = get().kit;
       if (!kit) {
-        kit = new (require('@creit.tech/stellar-wallets-kit').StellarWalletsKit)();
+        const mod = await import('@creit.tech/stellar-wallets-kit');
+        kit = new mod.StellarWalletsKit({ network: mod.WalletNetwork.TESTNET });
+        if (kit.setup) {
+          await (kit as any).setup();
+        }
         set({ kit });
       }
       const wallet: any = await (kit as any).openModalAndConnect();
